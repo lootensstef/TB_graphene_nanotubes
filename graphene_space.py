@@ -10,8 +10,8 @@ def graphene_simmetrylines(N):
         InputError if N<2 or not an integer: the band construction doesn't make sense for a number of points that's fractional or too low
     """
 
-    M_Gamma=np.array([np.linspace(1/2,0,N),np.zeros(N)])
-    Gamma_K=np.array([np.linspace(0,2/3,N),np.linspace(0,1/3,N)])
-    K_M=np.array([np.linspace(2/3,1/2,N),np.linspace(1/3,1/2,N)])
+    M_to_Gamma=np.array([np.linspace(1/2,0,N),np.zeros(N)])
+    Gamma_to_K=np.array([np.linspace(0,2/3,N),np.linspace(0,1/3,N)])
+    K_to_M=np.array([np.linspace(2/3,1/2,N),np.linspace(1/3,1/2,N)])
 
-    return M_Gamma, Gamma_K, K_M
+    return M_to_Gamma, Gamma_to_K, K_to_M
