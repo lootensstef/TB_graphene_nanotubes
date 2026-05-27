@@ -122,17 +122,18 @@ def simulate_energybands(input_material, input_n, input_m, input_precision):
 
             x_to_x=nanotube_space.nanotube_symmetryline(k_gamma, k_z, j, input_precision)
 
-            bandfunc_x_x=tb_simple_nn.bandfunc(x_to_x[0], x_to_x[1])
+            bandfunc_x_x=tb_simple_nn.bandfunc(x_to_x[0, :], x_to_x[1, :])
 
             e_p_x_x, e_m_x_x=tb_simple_nn.eigenvals(bandfunc_x_x)
+            k_segment=np.linspace(0,1, input_precision)
 
-            temp_k_bands.append(x_to_x)
+            temp_k_bands.append(k_segment)
             temp_e_p_bands.append(e_p_x_x)
             temp_e_m_bands.append(e_m_x_x)
 
-        k_bands=np.array(temp_k_bands)
-        e_p_bands=np.array(temp_e_p_bands)
-        e_m_bands=np.array(temp_e_m_bands)
+        k_bands=np.concatenate(temp_k_bands)
+        e_p_bands=np.concatenate(temp_e_p_bands)
+        e_m_bands=np.concatenate(temp_e_m_bands)
 
         return k_bands, e_p_bands, e_m_bands
     
