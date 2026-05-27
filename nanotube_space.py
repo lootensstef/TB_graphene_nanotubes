@@ -22,7 +22,7 @@ def nanotube_gammas(n,m):
         k_b2=(n+2*m)/(q*d_r)
 
         k_gamma=np.array([k_b1, k_b2])
-        j_range=np.linspace(-q/2, (q/2-1), q)
+        j_range=np.linspace(int(-q/2), int(q/2-1), q)
 
         return k_gamma, j_range        
         
