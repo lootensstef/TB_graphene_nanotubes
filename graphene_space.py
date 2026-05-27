@@ -1,6 +1,6 @@
 import numpy as np
 
-def graphene_simmetrylines(N):
+def graphene_symmetrylines(N):
     """This function constructs the vectors of points along high simmetry lines inside the graphene brillouin zone, in relative coordinates for simplicity of calculations.
     
     Parameters:

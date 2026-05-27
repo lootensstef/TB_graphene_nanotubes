@@ -92,7 +92,7 @@ def simulate_energybands(input_material, input_n, input_m, input_precision):
     
     if input_material=="graphene":
 
-        m_to_gamma, gamma_to_k, k_to_m=graphene_space.graphene_simmetrylines(input_precision)
+        m_to_gamma, gamma_to_k, k_to_m=graphene_space.graphene_symmetrylines(input_precision)
 
         bandfunc_m_gamma=tb_simple_nn.bandfunc(m_to_gamma[0,:], m_to_gamma[1,:])
         bandfunc_gamma_k=tb_simple_nn.bandfunc(gamma_to_k[0,:], gamma_to_k[1,:])
