@@ -23,21 +23,21 @@ def material_selector():
     m=0
 
     while True:
-        material=input("Choose a material to simulate (graphene/nanotube)").lower()
+        material=input("Choose a material to simulate (graphene/nanotube): ").lower()
 
         if material=="graphene":
             break
         elif material=="nanotube":
 
             while True:
-                print("Choose the type of (n,m) nanotube")
+                print("Choose the type of (n,m) nanotube: ")
 
                 try: 
-                    n=int(input("n=?"))
-                    m=int(input("m=?"))
+                    n=int(input("n: "))
+                    m=int(input("m: "))
 
-                    if n<1 or m<1:
-                        print("Invalid input, integers must be 1 or greater")
+                    if (n<0 or m<0) or (n<1 and m<1):
+                        print("Invalid input, integers must be non negative with at least one positive")
                     else:
                         break                    
                 except ValueError:
