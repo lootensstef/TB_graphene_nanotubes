@@ -9,12 +9,13 @@ def main():
 
     #various pyplot graphic options
     plt.figure(figsize=(16,10), dpi=150)
-    
+
     plt.plot(k_bands, e_p_bands, color="black", alpha=1, linewidth=3)
     plt.plot(k_bands, e_m_bands, color="black", alpha=1, linewidth=3)
 
-    plt.show()
+    plt.xticks([0, precision, 2*precision-1, 3*precision-2], ["M", r"$\Gamma$", "K", "M"])
 
+    plt.show()
 
 
 
