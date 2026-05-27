@@ -12,18 +12,19 @@ def main():
 
 
     if material=="graphene":
-        plt.plot(k_bands, e_p_bands, color="black", alpha=1, linewidth=3)
-        plt.plot(k_bands, e_m_bands, color="black", alpha=1, linewidth=3)
+        plt.plot(k_bands, e_p_bands, color="black", alpha=1, linewidth=1)
+        plt.plot(k_bands, e_m_bands, color="blue", alpha=1, linewidth=1)
 
         plt.xticks([0, precision, 2*precision-1, 3*precision-2], ["M", r"$\Gamma$", "K", "M"])
     
     elif material=="nanotube":
         band_number=0
         while band_number < e_p_bands.size:
-            start_index=(band_number)*(precision+1)
+            start_index=(band_number)*(precision)
             end_index=(band_number+1)*precision
 
-            plt.plot(k_bands[start_index : end_index], e_p_bands[start_index : end_index], color="black", alpha=1, linewidth=3)
+            plt.plot(k_bands[start_index : end_index], e_p_bands[start_index : end_index], color="black", alpha=1, linewidth=1)
+            plt.plot(k_bands[start_index : end_index], e_m_bands[start_index : end_index], color="blue", alpha=1, linewidth=1)
 
             band_number+=1
 
