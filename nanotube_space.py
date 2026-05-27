@@ -17,7 +17,7 @@ def nanotube_gammas(n,m):
         """
 
         d_r=np.gcd(n+2*m, 2*n+m)
-        q=2*(n**2+m**2+n*m)/d_r
+        q=int(2*(n**2+m**2+n*m)/d_r)
         k_b1=(2*n+m)/(q*d_r)
         k_b2=(n+2*m)/(q*d_r)
 
@@ -43,7 +43,7 @@ def nanotube_kz(n,m):
         """
 
         d_r=np.gcd(n+2*m, 2*n+m)
-        q=2*(n**2+m**2+n*m)/d_r
+        q=int(2*(n**2+m**2+n*m)/d_r)
         k_z=np.array([m/q, -n/q])
 
         return k_z
