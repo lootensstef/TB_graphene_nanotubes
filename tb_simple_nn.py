@@ -35,7 +35,8 @@ def eigenvals(f_k, eps2p=0, gamma_0=-2.75, s_0=0.05):
     Raise: 
         InputError if f_k<0: we should be dealing with real numbers"""
     
-    E_p=(eps2p-gamma_0*np.sqrt(f_k))/(1-s_0*np.sqrt(f_k))
-    E_m=(eps2p+gamma_0*np.sqrt(f_k))/(1+s_0*np.sqrt(f_k))
+    safe_sqrt_f=np.sqrt(np.clip(f_k, 0, None))
+    E_p=(eps2p-gamma_0*safe_sqrt_f)/(1-s_0*safe_sqrt_f)
+    E_m=(eps2p+gamma_0*safe_sqrt_f)/(1+s_0*safe_sqrt_f)
 
     return E_p, E_m
