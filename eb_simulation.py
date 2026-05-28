@@ -102,7 +102,7 @@ def simulate_energybands(input_material, input_n, input_m, input_precision):
         e_p_gk, e_m_gk=tb_simple_nn.eigenvals(bandfunc_gamma_k)
         e_p_km, e_m_km=tb_simple_nn.eigenvals(bandfunc_k_m)
 
-        k_band=np.linspace(0,3*input_precision-2, 3*input_precision-2)
+        k_band=np.linspace(0,3*input_precision-3,3*input_precision-2)
         e_p_band=np.concatenate((e_p_mg, e_p_gk[1:], e_p_km[1:]))
         e_m_band=np.concatenate((e_m_mg, e_m_gk[1:], e_m_km[1:]))
 
