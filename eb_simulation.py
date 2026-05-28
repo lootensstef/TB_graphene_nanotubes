@@ -68,8 +68,8 @@ def precision_selector():
         try: 
             precision=int(input("N=?"))
 
-            if precision<1:
-                print("Invalid input, integer must be 1 or greater")
+            if precision<2:
+                print("Invalid input, integer must be 2 or greater")
             else:
                 break                    
         except ValueError:
