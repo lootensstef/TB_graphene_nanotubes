@@ -1,8 +1,8 @@
 import numpy as np
 
-import graphene_space
-import nanotube_space
-import tb_simple_nn
+import graphene_space #Reciprocal space lines construction for graphene
+import nanotube_space #Reciprocal space lines construction for nanotubes
+import tb_simple_nn #Nearest neighbour tight-binding model used for the calculations
 
 def material_selector():
     """This function handles the user input to select the type of available simulations to run
