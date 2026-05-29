@@ -27,6 +27,8 @@ def main():
             plt.plot(k_bands[start_index : end_index], e_m_bands[start_index : end_index], color="blue", alpha=1, linewidth=1)
 
             band_number+=1
+        
+        plt.xticks([0,k_bands[-1]], [r"$\Gamma$", "X"])
 
     plt.show()
 

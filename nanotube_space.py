@@ -44,7 +44,7 @@ def nanotube_kz(n,m):
 
         d_r=np.gcd(n+2*m, 2*n+m)
         q=int(2*(n**2+m**2+n*m)/d_r)
-        k_z=np.array([m/q, -n/q])
+        k_z=np.array([m/(2*q), -n/(2*q)])
 
         return k_z
 
@@ -66,6 +66,6 @@ def nanotube_symmetryline(k_gamma, k_z, j=0, N=2):
         """
         
         
-        x_to_gamma_to_x=np.array([np.linspace(j*k_gamma[0]-k_z[0],j*k_gamma[0]+k_z[0], N), np.linspace(j*k_gamma[1]-k_z[1],j*k_gamma[1]+k_z[1], N)])
+        x_to_gamma_to_x=np.array([np.linspace(j*k_gamma[0],j*k_gamma[0]+k_z[0], N), np.linspace(j*k_gamma[1],j*k_gamma[1]+k_z[1], N)])
 
         return x_to_gamma_to_x
