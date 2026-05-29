@@ -1,13 +1,17 @@
 import matplotlib.pyplot as plt
-import eb_simulation #separate file that runs all the calculations and outputs the energy bands
+import eb_simulation #Project file that runs the calculations to determine the energy bands
 
 
 def main():
+    
+    #Making the user select the type of simulation with terminal input
     material, nt_n, nt_m = eb_simulation.material_selector()
     precision= eb_simulation.precision_selector()
+
+    #Running the simulation for the selected material
     k_bands, e_p_bands, e_m_bands = eb_simulation.simulate_energybands(material, nt_n, nt_m, precision)
 
-    #various pyplot graphic options
+    #Creating the plot and adjusting graphic options 
     plt.figure(figsize=(16,10), dpi=150)
     plt.rcParams["font.family"] = "Times New Roman"
 
@@ -42,13 +46,8 @@ def main():
 
     plt.grid(alpha=0.3, linestyle="--")
 
+    #Displaying the plot on a graphic window
     plt.show()
-
-
-
-
-
-
 
 if __name__ == "__main__":
     main()
