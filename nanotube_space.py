@@ -9,12 +9,7 @@ def nanotube_gammas(n,m):
 
         Returns:
             k_gamma: the gamma point coordinates (for j=1)
-            j_range: vector of coefficients that are allowed to multiply k_gamma to find the gamma points
-
-        Raises:
-        InputError if n, m are not integers greater than zero.
-        
-        """
+            j_range: array of coefficients that are allowed to multiply k_gamma to find the gamma points"""
 
         d_r=np.gcd(n+2*m, 2*n+m)
         q=int(2*(n**2+m**2+n*m)/d_r)
@@ -35,12 +30,7 @@ def nanotube_kz(n,m):
             m: integer coefficient of the a_2 graphene primitive lattice vector in the chiral vector c_h
 
         Returns:
-            k_z: has the direction of the 1D Brillouin lines, and half their length as magnitude.
-
-        Raises:
-        InputError if n, m are not integers greater than zero.
-        
-        """
+            k_z: vector with the direction of the 1D Brillouin lines, and half their length as magnitude"""
 
         d_r=np.gcd(n+2*m, 2*n+m)
         q=int(2*(n**2+m**2+n*m)/d_r)
@@ -49,23 +39,18 @@ def nanotube_kz(n,m):
         return k_z
 
 
-def nanotube_symmetryline(k_gamma, k_z, j=0, N=2):
+def nanotube_symmetryline(k_gamma, k_z, j, N):
         """This function builds the j-th 1D nanotube Brillouin zone projection onto the graphene 2D Brillouin zone
         
         Parameters:
             k_gamma: the center point of the line, also called gamma point
             k_z: vector with the direction of the line and half its length
             j: the j_th line
-            N: Number of points for the line. Affects calculated bands smoothness and calculation speeds.
+            N: Number of points for the line. Affects bands smoothness, bandgap accuracy and calculation speeds.
         
         Returns:
-        Numpy arrays encoding discretized versions of the lines in reciprocal space
-
-        Raises:
-        InputError if int(j)!=j, N<2, k_gamma outside the graphene brillouin zone.
-        """
+        gamma_to_x: (2, N) numpy array encoding a discretized version of the j-th reciprocal space line"""
         
-        
-        x_to_gamma_to_x=np.array([np.linspace(j*k_gamma[0],j*k_gamma[0]+k_z[0], N), np.linspace(j*k_gamma[1],j*k_gamma[1]+k_z[1], N)])
+        gamma_to_x=np.array([np.linspace(j*k_gamma[0],j*k_gamma[0]+k_z[0], N), np.linspace(j*k_gamma[1],j*k_gamma[1]+k_z[1], N)])
 
-        return x_to_gamma_to_x
+        return gamma_to_x
