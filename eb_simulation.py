@@ -11,16 +11,15 @@ def material_selector():
         none, the values are taken as successive terminal inputs at runtime
     
     Returns:
-        material: selected material
-        n, m: nanotube indices, used if the material is a nanotube
+        material: selected material (string)
+        n, m: nanotube indices (integers), only used if the material is a nanotube 
 
     Raises:
-        ValueError if the user writes invalid inputs     
-    """
+        ValueError if the user writes invalid n, m inputs: inputs that fail to be converted to integers"""
 
-    material="unselected"
-    n=1
-    m=0
+    material=None
+    n=None
+    m=None
 
     while True:
         material=input("Choose a material to simulate (graphene/nanotube): ").lower()
@@ -37,14 +36,14 @@ def material_selector():
                     m=int(input("m: "))
 
                     if (n<0 or m<0) or (n<1 and m<1):
-                        print("Invalid input, integers must be non negative with at least one positive")
+                        print("Invalid input, integers must be non negative with at least one different from zero \n")
                     else:
                         break                    
                 except ValueError:
-                    print("Invalid input, please enter integer numbers")           
+                    print("Invalid input, please enter integer numbers \n")           
             break
         else:
-            print("Invalid input, please write a valid material")
+            print("Invalid input, please write a valid material \n")
     return material, n, m
 
 
@@ -55,12 +54,12 @@ def precision_selector():
         none, the value is taken as an input at runtime
     
     Returns:
-        N: number of points per line, which can be seen as precision
+        N: number of points per line (integer), a parameter that affects precision
 
     Raises:
-        ValueError if the user writes invalid inputs     
-    """
-    precision=1
+        ValueError if the user writes an invalid input: something that fails to be converted to an integer"""
+    
+    precision=None
 
     while True:
         print("Choose the type number of points per reciprocal space line")
@@ -69,11 +68,11 @@ def precision_selector():
             precision=int(input("N=?"))
 
             if precision<2:
-                print("Invalid input, integer must be 2 or greater")
+                print("Invalid input, integer must be 2 or greater \n")
             else:
                 break                    
         except ValueError:
-            print("Invalid input, please enter an integer number")      
+            print("Invalid input, please enter an integer number \n")      
 
     return precision     
 
@@ -82,12 +81,14 @@ def simulate_energybands(input_material, input_n, input_m, input_precision):
     """This function simulates the energy bands of the selected material using its reciprocal space lines defined in (material)_space.py and the nearest neighbour tight-binding model defined in tb_simple_nn.py
     
     Parameters:
-        material, input_n, input_m: the type of material to simulate
-        precision: a parameter of precision for the simulation, in this case the number of points per reciprocal line
+        material, input_n, input_m: the type of material to simulate, taken from material_selector()
+        precision: a parameter of precision for the simulation, in this case the number of points per reciprocal line, taken from precision_selector()
 
     Returns:
-    E_k: arrays of 
-    
+        k_band: 1D array that represents all the data points on the x axis. Their values are constructed for the purposes of easy plotting and labelling and don't retain a consistent physical meaning
+        e_p_band, e_m_band: concatenated 1D arrays of energy values (eV). 
+            Graphene: the concatenation happens along 3 different symmetry lines. 
+            Nanotube: the concatenation happens between different 1D projection lines on the graphene 2D Brillouin zone.
     """
     
     if input_material=="graphene":
