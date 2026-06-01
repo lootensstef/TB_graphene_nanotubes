@@ -94,7 +94,8 @@ def energyparams_selector():
             eps2p=0.0
             gamma_0=-2.75
             s_0=0.05
-            
+
+            break
         elif decision=="y":
 
             while True:
