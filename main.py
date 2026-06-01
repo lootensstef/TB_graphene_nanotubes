@@ -32,8 +32,8 @@ def main():
     
     elif material=="nanotube":
         band_number=0
-
-        while band_number < e_p_bands.size:
+        num_bands=e_p_bands.size // precision
+        while band_number < num_bands:
             start_index=(band_number)*precision
             end_index=(band_number+1)*precision
 

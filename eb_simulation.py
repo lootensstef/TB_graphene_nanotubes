@@ -18,6 +18,10 @@ def simulate_energybands(input_material, input_n, input_m, input_precision, inpu
         e_p_band, e_m_band (1D arrays): concatenated arrays of energy values (eV). 
             Graphene: the concatenation happens along 3 different symmetry lines. 
             Nanotube: the concatenation happens between different 1D projection lines on the graphene 2D Brillouin zone.
+    
+    Raises:
+        ValueError if somehow the input material is invalid
+    
     """
     
     if input_material=="graphene":
@@ -64,6 +68,9 @@ def simulate_energybands(input_material, input_n, input_m, input_precision, inpu
         k_bands=np.concatenate(temp_k_bands)
         e_p_bands=np.concatenate(temp_e_p_bands)
         e_m_bands=np.concatenate(temp_e_m_bands)
+    
+    else:
+        raise ValueError("input_material must be 'graphene' or 'nanotube'")
 
-        return k_bands, e_p_bands, e_m_bands
+    return k_bands, e_p_bands, e_m_bands
     
