@@ -40,6 +40,16 @@ def simulate_energybands(input_material, input_n, input_m, input_precision, inpu
         e_p_band=np.concatenate((e_p_mg, e_p_gk[1:], e_p_km[1:]))
         e_m_band=np.concatenate((e_m_mg, e_m_gk[1:], e_m_km[1:]))
 
+        e_p = np.asarray(e_p_band)
+        e_m = np.asarray(e_m_band)
+
+        cbm = np.min(e_p)
+        vbm = np.max(e_m)
+
+        Eg = cbm - vbm
+        Eg = max(Eg, 0.0)
+
+        print(f"Calculated bandgap={Eg:.3f} eV")
 
         return k_band, e_p_band, e_m_band
     
@@ -68,22 +78,26 @@ def simulate_energybands(input_material, input_n, input_m, input_precision, inpu
         k_bands=np.concatenate(temp_k_bands)
         e_p_bands=np.concatenate(temp_e_p_bands)
         e_m_bands=np.concatenate(temp_e_m_bands)
+
+        e_p = np.asarray(e_p_bands)
+        e_m = np.asarray(e_m_bands)
+
+        cbm = np.min(e_p)
+        vbm = np.max(e_m)
+
+        Eg = cbm - vbm
+        Eg = max(Eg, 0.0)
+
+        print(f"Calculated bandgap={Eg:.3f} eV")
+
+
+        return k_bands, e_p_bands, e_m_bands
     
     else:
         raise ValueError("input_material must be 'graphene' or 'nanotube'")
     
 
-    e_p = np.asarray(e_p_bands)
-    e_m = np.asarray(e_m_bands)
-
-    cbm = np.min(e_p)
-    vbm = np.max(e_m)
-
-    Eg = cbm - vbm
-    Eg = max(Eg, 0.0)
-
-    print(f"Calculated bandgap={Eg:.3f} eV")
 
 
-    return k_bands, e_p_bands, e_m_bands
+
     
