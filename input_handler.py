@@ -91,7 +91,10 @@ def energyparams_selector():
         decision=input("Would you like custom tight-binding parameters? (y/n): ").lower()
 
         if decision=="n":
-            break
+            eps2p=0.0
+            gamma_0=-2.75
+            s_0=0.05
+            
         elif decision=="y":
 
             while True:

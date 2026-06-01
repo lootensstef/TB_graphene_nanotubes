@@ -5,7 +5,7 @@ import nanotube_space #Reciprocal space lines construction for nanotubes
 import tb_simple_nn #Nearest neighbour tight-binding model used for the calculations
 
 
-def simulate_energybands(input_material, input_n, input_m, input_precision, input_eps2p=0, input_gamma_0=-2.75, input_s_0=0.05):
+def simulate_energybands(input_material, input_n, input_m, input_precision, input_eps2p, input_gamma_0, input_s_0):
     """This function simulates the energy bands of the selected material using its reciprocal space lines defined in (material)_space.py and the nearest neighbour tight-binding model defined in tb_simple_nn.py
     
     Parameters:
