@@ -29,7 +29,7 @@ def test_bandfunc_reasonable_limits_precision():
 
 
 def test_eigenvals_stability():
-    """This function tests the stability of the eigenvals function for extreme (even technically not possible)
+    """This function tests the stability of the eigenvals function for extreme (even technically not possible) f(k) inputs
 
     GIVEN: extreme f(k) values
     WHEN: eigenvalues are computed
@@ -58,7 +58,7 @@ def test_eigenvals_ordering():
     assert np.all(E_p >= E_m)
 
 def test_eigenvals_bandgap_approximation():
-    """This function tests that the energy bands close to the K points have a small gap
+    """This function tests that the energy bands close to the K points have a reasonably small gap
 
     GIVEN: k points near symmetry (small variation)
     WHEN: tight-binding energies are computed
@@ -74,4 +74,4 @@ def test_eigenvals_bandgap_approximation():
 
     gap_estimate = np.max(E_p - E_m)
 
-    assert gap_estimate < 2e-1
+    assert gap_estimate < (10/50)
