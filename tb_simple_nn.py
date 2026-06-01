@@ -33,7 +33,7 @@ def eigenvals(f_k, eps2p, gamma_0, s_0):
     Returns:
         E_p, E_m (floats): the two pi-band energy eigenvalues for the wave vector k"""
     
-    safe_sqrt_f=np.sqrt(np.clip(f_k, 0, None))
+    safe_sqrt_f=np.sqrt(np.maximum(f_k, 0))
 
     denom_p = 1 - s_0 * safe_sqrt_f
     denom_m = 1 + s_0 * safe_sqrt_f
