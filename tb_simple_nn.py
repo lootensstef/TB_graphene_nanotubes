@@ -10,6 +10,9 @@ def bandfunc(k_b1, k_b2):
     Returns:
         f_k (float): bandfunction value for the k vector provided in input"""
     
+    k_b1 = np.asarray(k_b1)
+    k_b2 = np.asarray(k_b2)
+    
     f_k=3+2*np.cos(2*np.pi*k_b1)+2*np.cos(2*np.pi*k_b2)+2*np.cos(2*np.pi*(k_b1-k_b2))
 
     return f_k
@@ -31,7 +34,11 @@ def eigenvals(f_k, eps2p, gamma_0, s_0):
         E_p, E_m (floats): the two pi-band energy eigenvalues for the wave vector k"""
     
     safe_sqrt_f=np.sqrt(np.clip(f_k, 0, None))
-    E_p=(eps2p-gamma_0*safe_sqrt_f)/(1-s_0*safe_sqrt_f)
-    E_m=(eps2p+gamma_0*safe_sqrt_f)/(1+s_0*safe_sqrt_f)
+
+    denom_p = 1 - s_0 * safe_sqrt_f
+    denom_m = 1 + s_0 * safe_sqrt_f
+
+    E_p=(eps2p-gamma_0*safe_sqrt_f)/(denom_p)
+    E_m=(eps2p+gamma_0*safe_sqrt_f)/(denom_m)
 
     return E_p, E_m

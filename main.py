@@ -36,10 +36,10 @@ def main():
 
             plt.plot(k_bands[start_index : end_index], e_p_bands[start_index : end_index], color="deepskyblue", alpha=1, linewidth=1)
             plt.plot(k_bands[start_index : end_index], e_m_bands[start_index : end_index], color="darkorange", alpha=1, linewidth=1)
-            plt.axhline(y=0,color="red",linestyle="--",linewidth=0.8,alpha=0.5)
 
             band_number+=1
         
+        plt.axhline(y=0,color="red",linestyle="--",linewidth=0.8,alpha=0.5)
         plt.title(f"({nt_n},{nt_m}) carbon nanotube band structure", fontsize=22)
         plt.xlabel("Wave vector", fontsize=18)
         plt.ylabel("Energy (eV)", fontsize=18)
