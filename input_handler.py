@@ -114,4 +114,4 @@ def energyparams_selector():
         else:
             print("Invalid input, please write y or n \n")
 
-    return decision, eps2p, gamma_0, s_0
+    return eps2p, gamma_0, s_0

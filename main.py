@@ -7,7 +7,7 @@ def main():
     #Making the user select the type of simulation with terminal input
     material, nt_n, nt_m=input_handler.material_selector()
     precision=input_handler.precision_selector()
-    decision, eps2p, gamma_0, s_0=input_handler.energyparams_selector()
+    eps2p, gamma_0, s_0=input_handler.energyparams_selector()
 
     #Running the simulation for the selected material
     k_bands, e_p_bands, e_m_bands = eb_simulation.simulate_energybands(material, nt_n, nt_m, precision, eps2p, gamma_0, s_0)
