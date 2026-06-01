@@ -11,8 +11,8 @@ def material_selector():
         none, the values are taken as successive terminal inputs at runtime
     
     Returns:
-        material: selected material (string)
-        n, m: nanotube indices (integers), only used if the material is a nanotube 
+        material (string): selected material 
+        n, m (integers): nanotube indices, only used if the material is a nanotube 
 
     Raises:
         ValueError if the user writes invalid n, m inputs: inputs that fail to be converted to integers"""
@@ -81,12 +81,13 @@ def simulate_energybands(input_material, input_n, input_m, input_precision):
     """This function simulates the energy bands of the selected material using its reciprocal space lines defined in (material)_space.py and the nearest neighbour tight-binding model defined in tb_simple_nn.py
     
     Parameters:
-        material, input_n, input_m: the type of material to simulate, taken from material_selector()
-        precision: a parameter of precision for the simulation, in this case the number of points per reciprocal line, taken from precision_selector()
+        material (string): the type of material to simulate, see material_selector()
+        input_n, input_m (integers): the type of nanotube to simulate, see material_selector()
+        precision (integer): a parameter of precision for the simulation, in this case the number of points per reciprocal line, taken from precision_selector()
 
     Returns:
-        k_band: 1D array that represents all the data points on the x axis. Their values are constructed for the purposes of easy plotting and labelling and don't retain a consistent physical meaning
-        e_p_band, e_m_band: concatenated 1D arrays of energy values (eV). 
+        k_band (1D array): represents all the data points on the x axis. Their values are constructed for the purposes of easy plotting and labelling and don't retain a consistent physical meaning
+        e_p_band, e_m_band (1D arrays): concatenated arrays of energy values (eV). 
             Graphene: the concatenation happens along 3 different symmetry lines. 
             Nanotube: the concatenation happens between different 1D projection lines on the graphene 2D Brillouin zone.
     """
