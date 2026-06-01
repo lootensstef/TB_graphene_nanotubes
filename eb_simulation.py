@@ -4,80 +4,8 @@ import graphene_space #Reciprocal space lines construction for graphene
 import nanotube_space #Reciprocal space lines construction for nanotubes
 import tb_simple_nn #Nearest neighbour tight-binding model used for the calculations
 
-def material_selector():
-    """This function handles the user input to select the type of available simulations to run
-    
-    Parameters:
-        none, the values are taken as successive terminal inputs at runtime
-    
-    Returns:
-        material (string): selected material 
-        n, m (integers): nanotube indices, only used if the material is a nanotube 
 
-    Raises:
-        ValueError if the user writes invalid n, m inputs: inputs that fail to be converted to integers"""
-
-    material=None
-    n=None
-    m=None
-
-    while True:
-        material=input("Choose a material to simulate (graphene/nanotube): ").lower()
-
-        if material=="graphene":
-            break
-        elif material=="nanotube":
-
-            while True:
-                print("Choose the type of (n,m) nanotube: ")
-
-                try: 
-                    n=int(input("n: "))
-                    m=int(input("m: "))
-
-                    if (n<0 or m<0) or (n<1 and m<1):
-                        print("Invalid input, integers must be non negative with at least one different from zero \n")
-                    else:
-                        break                    
-                except ValueError:
-                    print("Invalid input, please enter integer numbers \n")           
-            break
-        else:
-            print("Invalid input, please write a valid material \n")
-    return material, n, m
-
-
-def precision_selector():
-    """This function handles the user input to select the number of points per reciprocal space line.
-    
-    Parameters:
-        none, the value is taken as an input at runtime
-    
-    Returns:
-        N: number of points per line (integer), a parameter that affects precision
-
-    Raises:
-        ValueError if the user writes an invalid input: something that fails to be converted to an integer"""
-    
-    precision=None
-
-    while True:
-        print("Choose the type number of points per reciprocal space line")
-
-        try: 
-            precision=int(input("N=?"))
-
-            if precision<2:
-                print("Invalid input, integer must be 2 or greater \n")
-            else:
-                break                    
-        except ValueError:
-            print("Invalid input, please enter an integer number \n")      
-
-    return precision     
-
-
-def simulate_energybands(input_material, input_n, input_m, input_precision):
+def simulate_energybands(input_material, input_n, input_m, input_precision, input_eps2p=0, input_gamma_0=-2.75, input_s_0=0.05):
     """This function simulates the energy bands of the selected material using its reciprocal space lines defined in (material)_space.py and the nearest neighbour tight-binding model defined in tb_simple_nn.py
     
     Parameters:
@@ -100,9 +28,9 @@ def simulate_energybands(input_material, input_n, input_m, input_precision):
         bandfunc_gamma_k=tb_simple_nn.bandfunc(gamma_to_k[0,:], gamma_to_k[1,:])
         bandfunc_k_m=tb_simple_nn.bandfunc(k_to_m[0,:], k_to_m[1,:])
 
-        e_p_mg, e_m_mg=tb_simple_nn.eigenvals(bandfunc_m_gamma)
-        e_p_gk, e_m_gk=tb_simple_nn.eigenvals(bandfunc_gamma_k)
-        e_p_km, e_m_km=tb_simple_nn.eigenvals(bandfunc_k_m)
+        e_p_mg, e_m_mg=tb_simple_nn.eigenvals(bandfunc_m_gamma, input_eps2p, input_gamma_0, input_s_0)
+        e_p_gk, e_m_gk=tb_simple_nn.eigenvals(bandfunc_gamma_k, input_eps2p, input_gamma_0, input_s_0)
+        e_p_km, e_m_km=tb_simple_nn.eigenvals(bandfunc_k_m, input_eps2p, input_gamma_0, input_s_0)
 
         k_band=np.linspace(0,3*input_precision-3,3*input_precision-2)
         e_p_band=np.concatenate((e_p_mg, e_p_gk[1:], e_p_km[1:]))
@@ -126,7 +54,7 @@ def simulate_energybands(input_material, input_n, input_m, input_precision):
 
             bandfunc_x_x=tb_simple_nn.bandfunc(x_to_x[0, :], x_to_x[1, :])
 
-            e_p_x_x, e_m_x_x=tb_simple_nn.eigenvals(bandfunc_x_x)
+            e_p_x_x, e_m_x_x=tb_simple_nn.eigenvals(bandfunc_x_x, input_eps2p, input_gamma_0, input_s_0)
             k_segment=np.linspace(0,1, input_precision)
 
             temp_k_bands.append(k_segment)

@@ -50,7 +50,7 @@ def precision_selector():
         none, the value is taken as an input at runtime
     
     Returns:
-        N: number of points per line (integer), a parameter that affects precision
+        N (integer): number of points per line (integer), a parameter that affects precision
 
     Raises:
         ValueError if the user writes an invalid input: something that fails to be converted to an integer"""
@@ -72,3 +72,42 @@ def precision_selector():
 
     return precision     
 
+def energyparams_selector():
+    """This function handles the user input to select the energy overlap parameters used in the model
+    
+    Parameters:
+        none, the value is taken as an input at runtime
+    
+    Returns:
+        eps2p, gamma_0, s_0 (floats): parameters for the tight-binding model energy bands function, see tb_simple_nn.py"""
+    
+    decision=None
+    eps2p=None
+    gamma_0=None
+    s_0=None
+
+    while True:
+
+        decision=input("Would you like custom tight-binding parameters? (y/n): ").lower()
+
+        if decision=="n":
+            break
+        elif decision=="y":
+
+            while True:
+                print("Choose the parameters \n")
+
+                try: 
+                    eps2p=float(input("epsilon_2p=? "))
+                    gamma_0=float(input("gamma_0=? "))
+                    s_0=float(input("s_0=? "))
+
+                    break
+
+                except ValueError:
+                    print("Invalid input, please enter numbers \n")           
+            break
+        else:
+            print("Invalid input, please write y or n \n")
+
+    return decision, eps2p, gamma_0, s_0

@@ -15,7 +15,7 @@ def bandfunc(k_b1, k_b2):
     return f_k
 
 
-def eigenvals(f_k, eps2p=0, gamma_0=-2.75, s_0=0.05):
+def eigenvals(f_k, eps2p, gamma_0, s_0):
     """This function calculates the two energy bands for a given k point in reciprocal space and tight-binding parameters
     
     Parameters:
