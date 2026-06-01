@@ -1,18 +1,18 @@
 import matplotlib.pyplot as plt
 import eb_simulation #Project file that runs the calculations to determine the energy bands
-
+import input_handler #Project file that handles the user input
 
 def main():
     
     #Making the user select the type of simulation with terminal input
-    material, nt_n, nt_m = eb_simulation.material_selector()
-    precision= eb_simulation.precision_selector()
+    material, nt_n, nt_m = input_handler.material_selector()
+    precision= input_handler.precision_selector()
 
     #Running the simulation for the selected material
     k_bands, e_p_bands, e_m_bands = eb_simulation.simulate_energybands(material, nt_n, nt_m, precision)
 
     #Creating the plot and adjusting graphic options 
-    plt.figure(figsize=(16,10), dpi=150)
+    plt.figure(figsize=(5,10), dpi=300)
     plt.rcParams["font.family"] = "Times New Roman"
 
     if material=="graphene":
