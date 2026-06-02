@@ -1,54 +1,69 @@
 import matplotlib.pyplot as plt
-import eb_simulation #Project file that runs the calculations to determine the energy bands
-import input_handler #Project file that handles the user input
+# Project file that runs the calculations to determine the energy bands
+import eb_simulation
+import input_handler  # Project file that handles the user input
+
 
 def main():
-    
-    #Making the user select the type of simulation with terminal input
-    material, nt_n, nt_m=input_handler.material_selector()
-    precision=input_handler.precision_selector()
-    eps2p, gamma_0, s_0=input_handler.energyparams_selector()
 
-    #Running the simulation for the selected material
-    k_bands, e_p_bands, e_m_bands = eb_simulation.simulate_energybands(material, nt_n, nt_m, precision, eps2p, gamma_0, s_0)
+    # Making the user select the type of simulation with terminal input
+    material, nt_n, nt_m = input_handler.material_selector()
+    precision = input_handler.precision_selector()
+    eps2p, gamma_0, s_0 = input_handler.energyparams_selector()
 
-    #Creating the plot and adjusting graphic options 
-    plt.figure(figsize=(5,10), dpi=300)
+    # Running the simulation for the selected material
+    k_bands, e_p_bands, e_m_bands = eb_simulation.simulate_energybands(
+        material, nt_n, nt_m, precision, eps2p, gamma_0, s_0)
+
+    # Creating the plot and adjusting graphic options
+    plt.figure(figsize=(5, 10), dpi=300)
     plt.rcParams["font.family"] = "Times New Roman"
 
-    if material=="graphene":
+    if material == "graphene":
         plt.plot(k_bands, e_p_bands, color="deepskyblue", alpha=1, linewidth=1)
         plt.plot(k_bands, e_m_bands, color="darkorange", alpha=1, linewidth=1)
-        plt.axhline(y=0,color="red",linestyle="--",linewidth=0.8,alpha=0.5)
+        plt.axhline(y=0, color="red", linestyle="--", linewidth=0.8, alpha=0.5)
 
-        plt.title("Graphene band structure along high symmetry lines", fontsize=22)
+        plt.title(
+            "Graphene band structure along high symmetry lines",
+            fontsize=22)
         plt.xlabel("Wave vector", fontsize=18)
         plt.ylabel("Energy (eV)", fontsize=18)
-        plt.xticks([0, precision-1, 2*precision-2, 3*precision-3], ["M", r"$\Gamma$", "K", "M"], fontsize=20)
-        
-    
-    elif material=="nanotube":
-        band_number=0
-        num_bands=e_p_bands.size // precision
+        plt.xticks([0, precision - 1, 2 * precision - 2, 3 *
+                   precision - 3], ["M", r"$\Gamma$", "K", "M"], fontsize=20)
+
+    elif material == "nanotube":
+        band_number = 0
+        num_bands = e_p_bands.size // precision
         while band_number < num_bands:
-            start_index=(band_number)*precision
-            end_index=(band_number+1)*precision
+            start_index = (band_number) * precision
+            end_index = (band_number + 1) * precision
 
-            plt.plot(k_bands[start_index : end_index], e_p_bands[start_index : end_index], color="deepskyblue", alpha=1, linewidth=1)
-            plt.plot(k_bands[start_index : end_index], e_m_bands[start_index : end_index], color="darkorange", alpha=1, linewidth=1)
+            plt.plot(k_bands[start_index: end_index],
+                     e_p_bands[start_index: end_index],
+                     color="deepskyblue",
+                     alpha=1,
+                     linewidth=1)
+            plt.plot(k_bands[start_index: end_index],
+                     e_m_bands[start_index: end_index],
+                     color="darkorange",
+                     alpha=1,
+                     linewidth=1)
 
-            band_number+=1
-        
-        plt.axhline(y=0,color="red",linestyle="--",linewidth=0.8,alpha=0.5)
-        plt.title(f"({nt_n},{nt_m}) carbon nanotube band structure", fontsize=22)
+            band_number += 1
+
+        plt.axhline(y=0, color="red", linestyle="--", linewidth=0.8, alpha=0.5)
+        plt.title(
+            f"({nt_n},{nt_m}) carbon nanotube band structure", fontsize=22)
         plt.xlabel("Wave vector", fontsize=18)
         plt.ylabel("Energy (eV)", fontsize=18)
-        plt.xticks([0,k_bands[-1]], [r"$\Gamma$", "X"], fontsize=20)
+        plt.xticks([0, k_bands[-1]], [r"$\Gamma$", "X"], fontsize=20)
 
     plt.grid(alpha=0.3, linestyle="--")
 
-    #Displaying the plot on a graphic window
+    # Displaying the plot on a graphic window
     plt.show()
+
 
 if __name__ == "__main__":
     main()

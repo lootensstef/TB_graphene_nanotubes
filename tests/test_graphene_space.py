@@ -32,6 +32,7 @@ def test_graphene_symmetrylines_valid_output():
     for line_array in [m_to_gamma, gamma_to_k, k_to_m]:
         assert np.all(np.isfinite(line_array))
 
+
 def test_graphene_symmetrylines_endpoints():
     """This function tests that the endpoints of a symmetry line are close to the expected symmetry point coordinates
 
@@ -49,4 +50,3 @@ def test_graphene_symmetrylines_endpoints():
 
     assert np.isclose(m_to_gamma[1, 0], 0.0)
     assert np.isclose(m_to_gamma[1, -1], 0.0)
-
