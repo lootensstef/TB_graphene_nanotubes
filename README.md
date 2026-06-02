@@ -86,7 +86,7 @@ For a detailed explanation of the relevant theory aspects behind this simulation
 ```text  
 TB_graphene_nanotubes/  
 │  
-├── main.py  
+└── main.py  
 	└─ input_handler.py
 	└─ eb_simulation.py
 		└─ graphene_space.py
