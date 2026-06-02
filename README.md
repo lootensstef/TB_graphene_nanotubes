@@ -48,6 +48,7 @@ python3 main.py
 ```  
 
 **Input**
+
 The program will ask:  
 
 1. Material type (`graphene` or `nanotube`)  
@@ -56,6 +57,7 @@ The program will ask:
 4. If you want to use custom tight-binding parameters ($\epsilon_{2p}$, $\gamma_0$, $s_0$) and in case you do it asks for their values (numbers convertible to floats)
 
 **Output**
+
 The program will:
 
 - Print the calculated energy bandgap for the chosen material in the terminal
