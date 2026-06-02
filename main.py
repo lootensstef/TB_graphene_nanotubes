@@ -21,10 +21,10 @@ def main():
         plt.plot(k_bands, e_m_bands, color="darkorange", alpha=1, linewidth=1)
         plt.axhline(y=0,color="red",linestyle="--",linewidth=0.8,alpha=0.5)
 
-        plt.title("Graphene band structure along high symmetry lines", fontsize=22)
-        plt.xlabel("Wave vector", fontsize=18)
-        plt.ylabel("Energy (eV)", fontsize=18)
-        plt.xticks([0, precision-1, 2*precision-2, 3*precision-3], ["M", r"$\Gamma$", "K", "M"], fontsize=20)
+        plt.title("Graphene bands along high symmetry lines", fontsize=18)
+        plt.xlabel("Wave vector", fontsize=14)
+        plt.ylabel("Energy (eV)", fontsize=14)
+        plt.xticks([0, precision-1, 2*precision-2, 3*precision-3], ["M", r"$\Gamma$", "K", "M"], fontsize=16)
         
     
     elif material=="nanotube":
@@ -40,10 +40,10 @@ def main():
             band_number+=1
         
         plt.axhline(y=0,color="red",linestyle="--",linewidth=0.8,alpha=0.5)
-        plt.title(f"({nt_n},{nt_m}) carbon nanotube band structure", fontsize=22)
-        plt.xlabel("Wave vector", fontsize=18)
-        plt.ylabel("Energy (eV)", fontsize=18)
-        plt.xticks([0,k_bands[-1]], [r"$\Gamma$", "X"], fontsize=20)
+        plt.title(f"({nt_n},{nt_m}) SWCNT bands", fontsize=18)
+        plt.xlabel("Wave vector", fontsize=14)
+        plt.ylabel("Energy (eV)", fontsize=14)
+        plt.xticks([0,k_bands[-1]], [r"$\Gamma$", "X"], fontsize=16)
 
     plt.grid(alpha=0.3, linestyle="--")
 
