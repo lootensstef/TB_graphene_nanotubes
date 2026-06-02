@@ -2,7 +2,7 @@ import numpy as np
 import nanotube_space
 
 def test_nanotube_k_shape():
-    """This function tests the correct shape of the objects that nanotube_gammas and nanotube_kz produce
+    """This function tests that nanotube_gammas and nanotube_kz produce arrays with the correct shape
 
     GIVEN: a valid nanotube (n,m)
     WHEN: gamma point and j range are constructed
@@ -19,7 +19,7 @@ def test_nanotube_k_shape():
     assert isinstance(j_range, np.ndarray)
 
 def test_nanotube_symmetryline_shape():
-    """This function tests the correct shape of the objects that nanotube_symmetryline produces
+    """This function tests that nanotube_symmetryline produces arrays with the correct shape
 
     GIVEN: valid nanotube k_gamma, k_z and precision N
     WHEN: nanotube symmetry line is constructed
