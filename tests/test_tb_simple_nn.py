@@ -27,6 +27,18 @@ def test_bandfunc_reasonable_limits_precision():
     assert np.all(tb_simple_nn.bandfunc(k_b1,k_b2)>-0.1)
     assert np.all(tb_simple_nn.bandfunc(k_b1,k_b2)<9.1)
 
+def test_bandfunc_symmetry():
+    """This function tests the bandfunc equivalent output with respect to symmetric input, as it's expected
+    GIVEN: (k1, k2)
+    WHEN: swapped coordinates
+    THEN: result should be identical
+    """
+
+    a = tb_simple_nn.bandfunc(0.2, 0.4)
+    b = tb_simple_nn.bandfunc(0.4, 0.2)
+
+    assert np.isclose(a, b)
+
 
 def test_eigenvals_stability():
     """This function tests the stability of the eigenvals function for extreme (even technically not possible) f(k) inputs
