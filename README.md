@@ -5,7 +5,7 @@ This project performs graphene and single-walled nanotubes electronic band struc
 ## Features
 
 **Graphene**
-- Simulate pi-band dispersion along high symmetry lines in the Brillouin zone ($M$ to $\Gamma$ to $K$ to $M$)
+- Simulate $\pi$-band dispersion along high symmetry lines in the Brillouin zone ($M$ to $\Gamma$ to $K$ to $M$)
 - Customize precision (number of evaluated k-points)
 - Customize tight-binding parameters or use default reasonable values (see paper referencia)
 - Plot the energy bands, plot saving can be done manually with the GUI interface
