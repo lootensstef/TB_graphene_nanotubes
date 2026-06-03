@@ -1,19 +1,21 @@
 # TB_graphene_nanotubes
-This project performs graphene and single-walled nanotubes electronic band structure calculations with the tight binding method and nearest neighbours approximation. Written for the "Computational materials physics" and "Software and computing for applied physics" Unibo master courses.
+This project performs graphene and single-walled nanotubes electronic band structure calculations with the tight-binding method and nearest neighbours approximation. Written for the "Computational materials physics" and "Software and computing for applied physics" Unibo master courses.
 
 ---
 ## Features
 
 **Graphene**
-- Simulate $\pi$-band dispersion along high symmetry lines in the Brillouin zone ($M$ to $\Gamma$ to $K$ to $M$)
-- Customize precision (number of evaluated k-points)
-- Customize tight-binding parameters or use default reasonable values (see paper referencia)
+- Simulate pi-band dispersion along high symmetry lines in the Brillouin zone ($M$ to $\Gamma$ to $K$ to $M$)
+- Customize precision (number of evaluated k-points for each high symmetry line)
+- Customize tight-binding parameters or use default reasonable values ( $\epsilon_2p=0$ , $\gamma_0=-2.75$, $s_0=0.05$ , see paper referencia)
+- Print the simulated energy gap on the terminal
 - Plot the energy bands, plot saving can be done manually with the GUI interface
 
 **Nanotubes**
 - Simulate arbitrary (n,m) nanotube energy bands inside the 1D restricted brillouin zone ($\Gamma$ to $X$)
-- Customize precision (number of evaluated k-points)
-- Customize tight-binding parameters or use default reasonable values (see paper referencia)
+- Customize precision (number of evaluated k-points for each band)
+- Customize tight-binding parameters or use default reasonable values ( $\epsilon_2p=0$ , $\gamma_0=-2.75$, $s_0=0.05$ , see paper referencia)
+- Print the simulated energy gap on the terminal
 - Plot the energy bands, plot saving can be done manually with the GUI interface
 
 ---
@@ -27,8 +29,8 @@ This project performs graphene and single-walled nanotubes electronic band struc
 - [Matplotlib](https://matplotlib.org/)
 - [Pytest](https://docs.pytest.org/en/stable/)
 
-**For correct font in plotting window**
-- Times New Roman font installed
+**For correct text style in plotting window**
+- Times New Roman font installed (Note: the program still runs and plots without it but it will display font errors on the terminal)
 
 ---
 ## Running and testing the program
@@ -64,18 +66,19 @@ The program will:
 - Display the calculated band structure on a Matplotlib window.
 
 **Testing**
+
 Still inside the main folder, write:
 
 ```
 pytest
 ```
 
-Works both inside PowerShell and bash. Use the option -v for more detailed info.
+The same command works both inside PowerShell and bash. Use the option -v for more detailed info.
 
 ---
-## Physics background
+## Physics background and example outputs
 
-For a detailed explanation of the relevant theory aspects behind this simulation, please refer to the documentation file referencia.
+For a detailed explanation of the relevant theory aspects behind this simulation, please refer to the sections 1 and 2 of the documentation file referencia. For band structure output examples and their comparison with reference structures please refer to section 3 of the same document.
 
 ---
 
@@ -86,7 +89,7 @@ For a detailed explanation of the relevant theory aspects behind this simulation
 ```text  
 TB_graphene_nanotubes/  
 │  
-└── main.py  
+├── main.py  
 	└─ input_handler.py
 	└─ eb_simulation.py
 		└─ graphene_space.py
