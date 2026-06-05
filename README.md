@@ -7,14 +7,14 @@ This project performs graphene and single-walled nanotubes electronic band struc
 **Graphene**
 - Simulate pi-band dispersion along high symmetry lines in the Brillouin zone ($M$ to $\Gamma$ to $K$ to $M$)
 - Customize precision (number of evaluated k-points for each high symmetry line)
-- Customize tight-binding parameters or use default reasonable values ( $\epsilon_2p=0$ , $\gamma_0=-2.75$, $s_0=0.05$ , see paper referencia)
+- Customize tight-binding parameters or use default reasonable values ( $\epsilon_2p=0$ , $\gamma_0=-2.75$, $s_0=0.05$ )
 - Print the simulated energy gap on the terminal
 - Plot the energy bands, plot saving can be done manually with the GUI interface
 
 **Nanotubes**
 - Simulate arbitrary (n,m) nanotube energy bands inside the 1D restricted brillouin zone ($\Gamma$ to $X$)
 - Customize precision (number of evaluated k-points for each band)
-- Customize tight-binding parameters or use default reasonable values ( $\epsilon_2p=0$ , $\gamma_0=-2.75$, $s_0=0.05$ , see paper referencia)
+- Customize tight-binding parameters or use default reasonable values ( $\epsilon_2p=0$ , $\gamma_0=-2.75$, $s_0=0.05$ )
 - Print the simulated energy gap on the terminal
 - Plot the energy bands, plot saving can be done manually with the GUI interface
 
@@ -78,7 +78,7 @@ The same command works both inside PowerShell and bash. Use the option -v for mo
 ---
 ## Physics background and example outputs
 
-For a detailed explanation of the relevant theory aspects behind this simulation, please refer to the sections 1 and 2 of the documentation file referencia. For band structure output examples and their comparison with reference structures please refer to section 3 of the same document.
+For a detailed explanation of the relevant theory aspects behind this simulation, please refer to the sections 1 and 2 of the documentation file [documentation/Computational_report_tb_graphene_nanotubes](https://github.com/lootensstef/TB_graphene_nanotubes/blob/main/documentation/Computational_report_tb_graphene_nanotubes.pdf). For band structure output examples and their comparison with reference structures please refer to section 3 of the same document.
 
 ---
 
